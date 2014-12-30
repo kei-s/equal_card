@@ -16,13 +16,15 @@ describe Equal do
     end
   end
 
-  describe '#solved?' do
+  describe '#answers' do
     subject { equal.solved? }
+    context '11' do
+      let(:c) { '11' }
+      it { expect(subject).to eq [] }
+    end
     context '111' do
       let(:c) { '111' }
-      it do
-        expect(subject).to be_truthy
-      end
+      it { expect(subject).to eq ['1=1'] }
     end
   end
 end
