@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Equal do
-  let(:equal) { Equal.new(c) }
+describe Equal::Cards do
+  let(:equal) { Equal::Cards.new(c) }
 
   describe 'new' do
     subject { equal }
@@ -9,7 +9,6 @@ describe Equal do
       let(:c) { '0123456789+-*/' }
       it { expect{ subject }.not_to raise_error }
     end
-
     context '?' do
       let(:c) { '?' }
       it { expect{ subject }.to raise_error(ArgumentError) }
@@ -17,7 +16,7 @@ describe Equal do
   end
 
   describe '#answers' do
-    subject { equal.solved? }
+    subject { equal.answers.to_a }
     context '11' do
       let(:c) { '11' }
       it { expect(subject).to eq [] }
