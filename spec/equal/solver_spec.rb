@@ -21,8 +21,11 @@ describe Equal::Solver do
     context '1+112' do
       it { expect(subject).to match_array ['1+1=2'] }
     end
-    context '1/111' do
-      it { expect(subject).to match_array ['1/1=1', '1=1=1'] }
+    context '1*111' do
+      it { expect(subject).to match_array ['1*1=1', '1=1=1'] }
+    end
+    context '1/1*1' do
+      it { expect(subject).to match_array ['1/1=1', '1=1*1', '1=1=1'] }
     end
   end
 
