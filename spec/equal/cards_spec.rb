@@ -15,13 +15,23 @@ describe Equal::Cards do
   end
 
   describe '#answers' do
-    subject { equal.answers.to_a }
+    subject { equal.answers.to_a.uniq }
     let(:c) {|example| example.example_group.description }
     context '11' do
       it { expect(subject).to eq [] }
     end
     context '111' do
       it { expect(subject).to eq ['1=1'] }
+    end
+    context '/1111' do
+      it { expect(subject).to match_array [
+        '11=11', '1=1=1', '1/1=1', '1=1/1'
+      ] }
+    end
+    context '21111' do
+      it { expect(subject).to match_array [
+        '11=11', '1=1=1'
+      ] }
     end
   end
 end
