@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe Equal::Solver do
   let(:solver) { Equal::Solver.new(p) }
-  let(:p) { |example| example.example_group.description }
 
   describe '#solve' do
     subject { solver.solve }
+    let(:p) { |example| example.example_group.description }
     context '11' do
       it { expect(subject).to match_array [] }
     end
@@ -29,8 +29,9 @@ describe Equal::Solver do
     end
   end
 
-  describe '#equal_patterns' do
-    subject { solver.equal_patterns }
+  describe '#equations' do
+    subject { solver.equations }
+    let(:p) { |example| example.example_group.description }
     context '11' do
       it { expect(subject).to match_array [] }
     end
@@ -77,6 +78,7 @@ describe Equal::Solver do
 
   describe '#equalable_positions' do
     subject { solver.equalable_positions }
+    let(:p) { |example| example.example_group.description }
     context '11' do
       it { expect(subject).to match_array [] }
     end
