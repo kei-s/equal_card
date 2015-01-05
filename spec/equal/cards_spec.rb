@@ -38,5 +38,12 @@ describe Equal::Cards do
         expect(subject).to match_array ['11=11', '1=1=1']
       end
     end
+    context '11129+*' do
+      it do
+        expect(subject).to match_array [
+          '1+1*1=2', '1+1=1*2', '1+1=2*1', '1*1+1=2', '1*2=1+1', '2*1=1+1', '2=1+1*1', '2=1*1+1'
+        ]
+      end
+    end
   end
 end

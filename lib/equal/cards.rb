@@ -21,7 +21,8 @@ class Equal::Cards
   end
 
   def valid?(pattern)
-    pattern[0] =~ /[0-9]/ && pattern[-1] =~ /[0-9]/
+    pattern !~ /[+\-*\/]{2,}/ &&
+      pattern[0] !~ /[+\-*\/]/ && pattern[-1] !~ /[+\-*\/]/
   end
 
   def unique?(pattern)
