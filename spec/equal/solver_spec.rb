@@ -27,6 +27,9 @@ describe Equal::Solver do
     context '1/1*1' do
       it { expect(subject).to match_array ['1/1=1', '1=1*1', '1=1=1'] }
     end
+    context '5/3910/6' do
+      it { expect(subject).to match_array ['5/3=10/6'] }
+    end
   end
 
   describe '#equations' do
@@ -102,6 +105,23 @@ describe Equal::Solver do
     end
     context '12345+6' do
       it { expect(subject).to match_array [1, 2, 3, 5] }
+    end
+  end
+
+  describe '.eval_exp' do
+    subject { Equal::Solver.eval_exp(e) }
+    let(:e) { |example| example.example_group.description }
+    context '1+1' do
+      it { expect(subject).to eq 2 }
+    end
+    context '1+1*2' do
+      it { expect(subject).to eq 3 }
+    end
+    context '1+1*2*2+2*3+4' do
+      it { expect(subject).to eq 15 }
+    end
+    context '5/2' do
+      it { expect(subject).to eq Rational(5, 2) }
     end
   end
 end

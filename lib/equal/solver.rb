@@ -7,9 +7,10 @@ class Equal::Solver
   def solve
     equations.select do |equation|
       exps = equation.split('=')
-      first = eval(exps[0])
+      next false unless Equal::Solver.valid?(exps)
+      first = Equal::Solver.eval_exp(exps[0])
       exps.all? do |exp|
-        first == eval(exp)
+        first == Equal::Solver.eval_exp(exp)
       end
     end
   end
@@ -45,5 +46,43 @@ class Equal::Solver
       arr << pos + 1 unless pos.nil?
     end
     arr
+  end
+
+  class << self
+    def valid?(expressions)
+      expressions.all? do |exp|
+        exp.split(/[+\-*\/]/).all? do |number|
+          !number.start_with?('0')
+        end
+      end
+    end
+
+    def eval_exp(expression)
+      calc_add(expression)
+    end
+
+    def calc_add(expression)
+      expression.scan(/([+-]?)([^+-]+)/).inject(nil) do |result, arr|
+        operator, exp = arr
+        value = calc_multiply(exp)
+        case operator
+        when '+' then result + value
+        when '-' then result - value
+        when ''  then value
+        end
+      end
+    end
+
+    def calc_multiply(expression)
+      expression.scan(%r{([*/]?)([^*/]+)}).inject(nil) do |result, arr|
+        operator, value = arr
+        value = value.to_i
+        case operator
+        when '*' then result * value
+        when '/' then Rational(result, value)
+        when ''  then value
+        end
+      end
+    end
   end
 end
