@@ -24,7 +24,7 @@ class Equal::Solver
       (1..positions.size).flat_map do |i|
         positions.combination(i).select do |combi|
           (1..i).all? do |j|
-            combi[j-1] - combi[j-2] != 1
+            combi[j - 1] - combi[j - 2] != 1
           end
         end.map do |combi|
           equal_pattern = pattern.dup
@@ -40,9 +40,9 @@ class Equal::Solver
   def equalable_positions
     pos = -1
     arr = []
-    while pos != nil
+    until pos.nil?
       pos = pattern.index(/[0-9].[0-9]/, pos + 1)
-      arr << pos + 1 if pos != nil
+      arr << pos + 1 unless pos.nil?
     end
     arr
   end

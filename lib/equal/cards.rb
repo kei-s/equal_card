@@ -1,10 +1,12 @@
 class Equal::Cards
   attr_reader :cards, :took_pattern
   def initialize(cards)
-    raise ArgumentError.new('0123456789 と +-*/ 以外の文字があります') unless cards =~ /^[0-9+\-*\/]*$/
+    unless cards =~ /^[0-9+\-*\/]*$/
+      fail ArgumentError, '0123456789 と +-*/ 以外の文字があります'
+    end
 
     @cards = cards
-    @took_pattern = Hash.new
+    @took_pattern = {}
   end
 
   def answers
@@ -15,7 +17,7 @@ class Equal::Cards
   private
 
   def patterns
-    @patterns ||= cards.split('').permutation.lazy.map{|array| array.join}
+    @patterns ||= cards.split('').permutation.lazy.map(&:join)
   end
 
   def valid?(pattern)
