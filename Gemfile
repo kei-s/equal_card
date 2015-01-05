@@ -1,5 +1,4 @@
-# A sample Gemfile
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-gem "thor"
-gem "rspec"
+# Specify your gem's dependencies in equal_card.gemspec
+gemspec

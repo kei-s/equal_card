@@ -1,8 +1,3 @@
 #!/usr/bin/env ruby
-require 'bundler/setup'
-require 'thor'
-require File.expand_path('../../lib/equal/cli', __FILE__)
-
-require 'benchmark'
-
-Equal::CLI.start(ARGV)
+require 'equal_card/cli'
+EqualCard::CLI.start(ARGV)

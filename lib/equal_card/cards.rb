@@ -1,3 +1,5 @@
+require 'equal_card/solver'
+
 class EqualCard::Cards
   attr_reader :cards, :took_pattern
   def initialize(cards)

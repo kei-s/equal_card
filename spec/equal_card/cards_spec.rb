@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'equal_card/cards'
 
 describe EqualCard::Cards do
   let(:equal) { EqualCard::Cards.new(c) }
