@@ -28,8 +28,8 @@ class Equal::Solver
   def equalable_patterns
     positions = equalable_positions
 
-    (1..positions.size).flat_map do |i|
-      positions.combination(i).select do |combi|
+    (1..positions.size).lazy.flat_map do |i|
+      positions.combination(i).lazy.select do |combi|
         # Prevent 1==1
         (1..i).all? do |j|
           combi[j - 1] - combi[j - 2] != 1
