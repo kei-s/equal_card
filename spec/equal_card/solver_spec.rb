@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Equal::Solver do
-  let(:solver) { Equal::Solver.new(p) }
+describe EqualCard::Solver do
+  let(:solver) { EqualCard::Solver.new(p) }
 
   describe '#solve' do
     subject { solver.solve }
@@ -109,7 +109,7 @@ describe Equal::Solver do
   end
 
   describe '.eval_exp' do
-    subject { Equal::Solver.eval_exp(e) }
+    subject { EqualCard::Solver.eval_exp(e) }
     let(:e) { |example| example.example_group.description }
     context '1+1' do
       it { expect(subject).to eq 2 }

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Equal::Cards do
-  let(:equal) { Equal::Cards.new(c) }
+describe EqualCard::Cards do
+  let(:equal) { EqualCard::Cards.new(c) }
 
   describe 'new' do
     subject { equal }

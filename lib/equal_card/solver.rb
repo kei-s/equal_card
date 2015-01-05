@@ -1,4 +1,4 @@
-class Equal::Solver
+class EqualCard::Solver
   attr_reader :pattern
   def initialize(pattern)
     @pattern = pattern
@@ -7,10 +7,10 @@ class Equal::Solver
   def solve
     equations.select do |equation|
       exps = equation.split('=')
-      next false unless Equal::Solver.valid?(exps)
-      first = Equal::Solver.eval_exp(exps[0])
+      next false unless EqualCard::Solver.valid?(exps)
+      first = EqualCard::Solver.eval_exp(exps[0])
       exps.all? do |exp|
-        first == Equal::Solver.eval_exp(exp)
+        first == EqualCard::Solver.eval_exp(exp)
       end
     end
   end

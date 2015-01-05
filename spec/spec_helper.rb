@@ -1,4 +1,4 @@
 require 'bundler/setup'
 require 'rspec'
 
-require File.expand_path('../../lib/equal.rb', __FILE__)
+require File.expand_path('../../lib/equal_card.rb', __FILE__)

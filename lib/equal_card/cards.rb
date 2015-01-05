@@ -1,4 +1,4 @@
-class Equal::Cards
+class EqualCard::Cards
   attr_reader :cards, :took_pattern
   def initialize(cards)
     unless cards =~ /^[0-9+\-*\/]*$/
@@ -11,7 +11,7 @@ class Equal::Cards
 
   def answers
     unique = patterns.select { |pattern| valid?(pattern) && unique?(pattern) }
-    unique.flat_map { |pattern| Equal::Solver.new(pattern).solve }
+    unique.flat_map { |pattern| EqualCard::Solver.new(pattern).solve }
   end
 
   private
