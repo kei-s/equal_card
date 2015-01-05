@@ -1,5 +1,5 @@
 require 'thor'
-require 'equal_card/cards'
+require 'equal_card'
 
 class EqualCard::CLI < Thor
   desc 'answer CARDS', 'カードを並べ替えて答えを表示する'
