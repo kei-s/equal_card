@@ -30,6 +30,12 @@ describe EqualCard::Solver do
     context '5/3910/6' do
       it { expect(subject).to match_array ['5/3=10/6'] }
     end
+    context '3-390' do
+      it { expect(subject).to match_array ['3-3=0'] }
+    end
+    context '3*8924' do
+      it { expect(subject).to match_array ['3*8=24'] }
+    end
   end
 
   describe '#equations' do

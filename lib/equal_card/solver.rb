@@ -51,8 +51,9 @@ class EqualCard::Solver
   class << self
     def valid?(expressions)
       expressions.all? do |exp|
+        # Prevent 01 as number
         exp.split(/[+\-*\/]/).all? do |number|
-          !number.start_with?('0')
+          number.size < 2 || !number.start_with?('0')
         end
       end
     end
