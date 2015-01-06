@@ -52,9 +52,11 @@ class EqualCard::Solver
     def valid?(expressions)
       expressions.all? do |exp|
         # Prevent 01 as number
-        exp.split(/[+\-*\/]/).all? do |number|
+        bool = exp.split(/[+\-*\/]/).all? do |number|
           number.size < 2 || !number.start_with?('0')
         end
+        # Prevent dividing by 0
+        bool && exp !~ /\/0/
       end
     end
 

@@ -27,6 +27,9 @@ describe EqualCard::Solver do
     context '1/1*1' do
       it { expect(subject).to match_array ['1/1=1', '1=1*1', '1=1=1'] }
     end
+    context '1/091' do
+      it { expect(subject).to match_array [] }
+    end
     context '5/3910/6' do
       it { expect(subject).to match_array ['5/3=10/6'] }
     end
